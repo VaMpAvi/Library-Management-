@@ -27,7 +27,7 @@ The API is built without the use of third-party libraries, adhering to the given
 
 ### 2. Setup PostgreSQL Database  
 - Create a new database:  
-  ```sql
+ ```sql
   CREATE DATABASE library_management;
 
   Create the users, books, and issuedbooks tables
@@ -38,18 +38,20 @@ The API is built without the use of third-party libraries, adhering to the given
     role VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE books (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    author VARCHAR(100) NOT NULL,
-    quantity int NOT NULL
+    CREATE TABLE books (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(200) NOT NULL,
+        author VARCHAR(100) NOT NULL,
+        quantity int NOT NULL
 );
 
-CREATE TABLE issuedbooks (
-    issueid SERIAL PRIMARY KEY,
-    uid INT REFERENCES users(id),
-    bid INT REFERENCES books(id),
+    CREATE TABLE issuedbooks (
+        issueid SERIAL PRIMARY KEY,
+        uid INT REFERENCES users(id),
+        bid INT REFERENCES books(id),
 );
+
+
 
 ### 3. Install Python Dependencies
 pip install flask
